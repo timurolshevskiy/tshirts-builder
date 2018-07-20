@@ -1,7 +1,11 @@
 package com.olshevskyi.domain
 
-interface LettersCollection {
+interface LettersCollection extends Iterable<Letter> {
 
-    void putLetter()
+    void putLetter(Letter letter, int positionNumber)
+
+    void putAll(List<Letter> letters)
+
+    void sort()
 
 }

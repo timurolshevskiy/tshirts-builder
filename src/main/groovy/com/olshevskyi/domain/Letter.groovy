@@ -2,8 +2,8 @@ package com.olshevskyi.domain
 
 class Letter {
 
-    long id
-    char value
+    boolean used
+    String value
     def incompatibleLetters = []
 
     boolean equals(o) {
@@ -12,17 +12,22 @@ class Letter {
 
         Letter letter = (Letter) o
 
-        if (value != letter.value) return false
         if (incompatibleLetters != letter.incompatibleLetters) return false
+        if (value != letter.value) return false
 
         return true
     }
 
     int hashCode() {
         int result
-        result = (int) value
+        result = (value != null ? value.hashCode() : 0)
         result = 31 * result + (incompatibleLetters != null ? incompatibleLetters.hashCode() : 0)
         return result
+    }
+
+    @Override
+    String toString() {
+        "${value.toUpperCase()}: ${incompatibleLetters.toString()}"
     }
 //    boolean equals(o) {
 //        if (this.is(o)) return true
