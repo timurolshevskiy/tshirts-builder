@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Build your T-shirt</title>
+    </head>
+<body>
+    <h3>
+        Comma-separated words list:
+    </h3>
+    <form action="/builder" id="form1" name="form1">
+        <textarea name="words" form="form1"></textarea>
+        <input type="text" name="text">
+        <input type="submit" value="Submit">
+    </form>
+
+    #if ($tShirts)
+    <p>
+        $tShirts
+    </p>
+    #end
+</body>
+</html>
