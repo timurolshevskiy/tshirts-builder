@@ -6,6 +6,7 @@ import static spark.Spark.*;
 class Main {
 
     public static void main(String[] args) {
+        staticFiles.location("/public");
         get("/builder", new TShirtController().displayMain);
     }
 }

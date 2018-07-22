@@ -1,0 +1,21 @@
+.t-shirt-wrapper {
+        line-height: 63px;
+        vertical-align: middle;
+        font-size: 30;
+        text-align: center;
+        background-size: cover;
+        width: 60px;
+        height: 63px;
+}
+
+.t-shirt-wrapper-front {
+    background-image: url("images/front.png");
+}
+
+.t-shirt-wrapper-back {
+    background-image: url("images/back.png");
+}
+
+.words-input {
+    width: 500px
+}

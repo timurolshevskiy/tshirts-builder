@@ -6,17 +6,15 @@ class DefaultLetterCollection implements LettersCollection {
 
     @Override
     void putLetter(Letter letter, int positionNumber) {
-        //if (!containsLetter(letter)) {
-            def listLetter = letters.find {
-                it.value == letter.value && positionNumber-- == 0
-            }
-            if (listLetter) {
-                listLetter.incompatibleLetters = completeList(listLetter.incompatibleLetters, letter.incompatibleLetters)
-                // todo
-            } else {
-                letters.add(letter)
-            }
-       // }
+        def listLetter = letters.find {
+            it.value == letter.value && positionNumber-- == 0
+        }
+        if (listLetter) {
+            listLetter.incompatibleLetters = completeList(listLetter.incompatibleLetters, letter.incompatibleLetters)
+            // todo
+        } else {
+            letters.add(letter)
+        }
     }
 
     private List<Letter> completeList(List<String> first, List<String> second) {
@@ -56,13 +54,7 @@ class DefaultLetterCollection implements LettersCollection {
     }
 
     void sort() {
-        letters.sort(new OrderBy<Letter>([{it.incompatibleLetters.size()}]).reversed())
-    }
-
-    def containsLetter(Letter letter) {
-        letters.any {
-            it.value == letter.value && it.incompatibleLetters.containsAll(letter.incompatibleLetters)
-        }
+        letters.sort(new OrderBy<Letter>([{ it.incompatibleLetters.size() }]).reversed())
     }
 
     void each(Closure closure) {

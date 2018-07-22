@@ -1,21 +1,54 @@
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="/style.css">
         <title>Build your T-shirt</title>
     </head>
 <body>
     <h3>
-        Comma-separated words list:
+        Space-separated words list:
     </h3>
     <form action="/builder" id="form1" name="form1">
-        <textarea name="words" form="form1"></textarea>
-        <input type="text" name="text">
+        <input name="words" type="text" class="words-input">
         <input type="submit" value="Submit">
     </form>
 
     #if ($tShirts)
+    <h5>Entered words:</h5>
     <p>
-        $tShirts
+        #foreach ($word in $words)
+            $word
+        #end
     </p>
+    <table>
+        <thead>
+            <tr>
+                <td></td>
+                <td>Front</td>
+                <td>Back</td>
+            </tr>
+        </thead>
+        #set ($count = 0)
+        #foreach ($tShirt in $tShirts)
+            #set ($count = $count + 1)
+            <tr>
+                <td>$count</td>
+
+                <td>
+                    <div class="t-shirt-wrapper t-shirt-wrapper-front">
+                        $tShirt.front.toUpperCase()
+                    </div>
+                </td>
+                <td>
+                    <div class="t-shirt-wrapper t-shirt-wrapper-back">
+                        $tShirt.back.toUpperCase()
+                    </div>
+                </td>
+
+                <!--<td>$tShirt.front</td>-->
+                <!--<td>$tShirt.back</td>-->
+            </tr>
+        #end
+    </table>
     #end
 </body>
 </html>

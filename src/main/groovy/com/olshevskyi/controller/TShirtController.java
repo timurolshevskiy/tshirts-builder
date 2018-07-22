@@ -19,13 +19,14 @@ public class TShirtController {
         String words = request.queryParams("words");
         HashMap<String, Object> model = new HashMap<>();
         if (words != null) {
-            List<String> splitWords = Arrays.stream(words.split(","))
+            List<String> splitWords = Arrays.stream(words.split(" "))
                     .map(String::trim)
                     .collect(Collectors.toList());;
 
             List<TShirt> tShirts = tShirtsBuilder.buildTShirts(splitWords);
 
             model.put("tShirts", tShirts);
+            model.put("words", splitWords);
         }
         return ViewUtil.renderView("/velocity/main.vl", model);
     });
