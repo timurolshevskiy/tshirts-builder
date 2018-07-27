@@ -1,4 +1,4 @@
-package com.olshevskyi.controller;
+package com.olshevskyi.web.controller;
 
 import com.olshevskyi.builder.TShirtsBuilder;
 import com.olshevskyi.builder.impl.DefaultTShirtsBuilder;
@@ -17,11 +17,12 @@ public class TShirtController {
 
     public final Route displayMain = ((request, response) -> {
         String words = request.queryParams("words");
+        System.out.println(words);
         HashMap<String, Object> model = new HashMap<>();
         if (words != null) {
             List<String> splitWords = Arrays.stream(words.split(" "))
                     .map(String::trim)
-                    .collect(Collectors.toList());;
+                    .collect(Collectors.toList());
 
             List<TShirt> tShirts = tShirtsBuilder.buildTShirts(splitWords);
 
